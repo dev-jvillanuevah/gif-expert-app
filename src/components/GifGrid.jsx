@@ -1,5 +1,5 @@
 import { useFetchGifs } from '../hooks/useFetchGifs';
-import { GitItem } from './GitItem';
+import { GifItem } from './GifItem';
 
 export const GifGrid = ({ category }) => {
   const { images, isLoading } = useFetchGifs(category);
@@ -13,7 +13,7 @@ export const GifGrid = ({ category }) => {
         {' '}
         {/* This will now show until we have the images loaded */}
         {images.map((image) => (
-          <GitItem key={image.id} {...image} />
+          <GifItem key={image.id} {...image} />
         ))}
       </div>
     </>
