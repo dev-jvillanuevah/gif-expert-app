@@ -2,6 +2,11 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { AddCategory } from '../../src/components';
 
 describe('tests on AddCagetory', () => {
+  test('should match with the snapshot', () => {
+    const { container } = render(<AddCategory onNewCategory={() => {}} />);
+    expect(container).toMatchSnapshot();
+  });
+
   test('should change the value on the textbox', () => {
     render(<AddCategory onNewCategory={() => {}} />); // create the test subject
     const input = screen.getByRole('textbox'); // substract the input

@@ -5,6 +5,16 @@ jest.mock('../../src/hooks/useFetchGifs');
 
 describe('tests on GifGrid', () => {
   const category = 'Dragon Ball Z';
+
+  test('should match with the snapshot', () => {
+    useFetchGifs.mockReturnValue({
+      images: [],
+      isLoading: true,
+    });
+    const { container } = render(<GifGrid category={category} />);
+    expect(container).toMatchSnapshot();
+  });
+
   test('should show the loading initially', () => {
     useFetchGifs.mockReturnValue({
       images: [],
