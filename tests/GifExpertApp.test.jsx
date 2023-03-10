@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { GifExpertApp } from '../src/GifExpertApp';
 
 describe('tests on GifExpertApp', () => {
@@ -6,6 +6,11 @@ describe('tests on GifExpertApp', () => {
     const { container } = render(<GifExpertApp />);
     expect(container).toMatchSnapshot();
   });
-});
 
-// TODO: add tests for onAddCategory func
+  test('should have a title', () => {
+    render(<GifExpertApp />);
+    expect(screen.getByRole('heading', { level: 1 }).innerHTML).toBe(
+      'GifExpertApp'
+    );
+  });
+});
